@@ -22,6 +22,6 @@
         }
     ],
     "require": {
-        "egulias/email-validator": "^4.0"
+        "egulias/email-validator": "^2.0|^3.1|^4.0"
     }
 }
