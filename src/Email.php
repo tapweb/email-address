@@ -20,7 +20,7 @@ class Email
         $domain = substr(strrchr($email, "@"), 1);
         if ($this->validator->isValid($email, new RFCValidation()) && strpos($domain, '.')) {
             $arr = explode("@", $email);
-            if ($arr[0] > self::MAX_LENGTH || $arr[1] > self::MAX_LENGTH) {
+            if (strlen($arr[0]) > self::MAX_LENGTH || strlen($arr[1]) > self::MAX_LENGTH) {
                 return false;
             }
             return true;
