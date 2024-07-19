@@ -24,7 +24,9 @@ class EmailTest extends TestCase
             '@記号がない' => ['no-at.domain.com', false],
             'トップレベルドメインがない' => ['no-tld@domain', false],
             'ローカル部に連続したドットがある' => ['double..dot@domain.com', false],
-            'ドメイン部に連続したドットがある' => ['email@domain..com', false]
+            'ドメイン部に連続したドットがある' => ['email@domain..com', false],
+            'メール名が64文字を超えています' => ['aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa@gmail.com', false],
+            'ドメイン名が 64 文字を超えている' => ['email@aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.com', false]
         ];
     }
 
