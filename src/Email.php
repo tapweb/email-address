@@ -36,6 +36,10 @@ class Email
         if (substr_count($domain, ".") > self::MAX_DOT_DOMAIN) {
             return false;
         }
+        $localPartPattern = '/^[a-zA-Z0-9\-_+](?!.*?\.\.)(?:[a-zA-Z0-9\-_+]*(?:\.[a-zA-Z0-9\-_+]+)*)?$/';
+        if (!preg_match($localPartPattern, $localPart)) {
+            return false;
+        }
         return true;
     }
 

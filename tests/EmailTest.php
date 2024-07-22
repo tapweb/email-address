@@ -26,7 +26,11 @@ class EmailTest extends TestCase
             'ローカル部に連続したドットがある' => ['double..dot@domain.com', false],
             'ドメイン部に連続したドットがある' => ['email@domain..com', false],
             'メール名が64文字を超えています' => ['aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa@gmail.com', false],
-            'ドメイン名が 64 文字を超えている' => ['email@aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.com', false]
+            'ドメイン名が 64 文字を超えている' => ['email@aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.com', false],
+            'ローカル部分に特殊文字が含まれています' => ['abc#def@mail.com', false],
+            'メールアドレスにはアンダースコアが付いています' => ['abc_def@mail.com', true],
+            'メールアドレスにはハイフンが含まれています' => ['abc-def@mail.com', true],
+            'ドメイン名を含むメールアドレスの教育' => ['xxx@willcorp.education', true]
         ];
     }
 
