@@ -28,8 +28,9 @@ class Email
     private function isValidEmailRule(string $email): bool
     {
         $arr = explode("@", $email);
+        $localPart = $arr[0];
         $domain = $arr[1];
-        if (strlen($arr[0]) > self::MAX_LENGTH || strlen($domain) > self::MAX_LENGTH) {
+        if (strlen($localPart) > self::MAX_LENGTH || strlen($domain) > self::MAX_LENGTH) {
             return false;
         }
         if (substr_count($domain, ".") > self::MAX_DOT_DOMAIN) {
