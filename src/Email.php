@@ -8,7 +8,6 @@ use Egulias\EmailValidator\Validation\RFCValidation;
 class Email
 {
     public const MAX_LENGTH = 64;
-    public const MAX_DOT_DOMAIN = 2;
     private EmailValidator $validator;
 
     public function __construct()
@@ -33,7 +32,8 @@ class Email
         if (strlen($localPart) > self::MAX_LENGTH || strlen($domain) > self::MAX_LENGTH) {
             return false;
         }
-        if (substr_count($domain, ".") > self::MAX_DOT_DOMAIN) {
+        $domainPattern = '/^(?!\.)[a-zA-Z0-9\-]*(?:\.[a-zA-Z0-9\-]+)*\.[a-z]+$/';
+        if (!preg_match($domainPattern, $domain)) {
             return false;
         }
         $localPartPattern = '/^[a-zA-Z0-9\-_+](?!.*?\.\.)(?:[a-zA-Z0-9\-_+]*(?:\.[a-zA-Z0-9\-_+]+)*)?$/';

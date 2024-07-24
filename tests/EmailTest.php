@@ -16,6 +16,7 @@ class EmailTest extends TestCase
             'ドットを含むメールアドレス' => ['firstname.lastname@domain.com', true],
             'サブドメインを含むメールアドレス' => ['email@subdomain.domain.com', true],
             'プラス記号を含むメールアドレス' => ['firstname+lastname@domain.com', true],
+            '有効なドメイン' => ['email@123.123.123.ab', true],
             'IPアドレスを含むメールアドレス' => ['email@123.123.123.123', false],
             '角括弧で囲まれたIPアドレスを含むメールアドレス' => ['email@[123.123.123.123]', false],
             '@記号がない' => ['plainaddress', false],
