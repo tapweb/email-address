@@ -16,7 +16,7 @@ class EmailTest extends TestCase
             'ドットを含むメールアドレス' => ['firstname.lastname@domain.com', true],
             'サブドメインを含むメールアドレス' => ['email@subdomain.domain.com', true],
             'プラス記号を含むメールアドレス' => ['firstname+lastname@domain.com', true],
-            '有効なドメイン' => ['email@123.123.123.ab', true],
+            'ドメイン部の最後にピリオドと小文字の英字がある' => ['email@123.123.123.ab', true],
             'IPアドレスを含むメールアドレス' => ['email@123.123.123.123', false],
             '角括弧で囲まれたIPアドレスを含むメールアドレス' => ['email@[123.123.123.123]', false],
             '@記号がない' => ['plainaddress', false],
@@ -26,12 +26,12 @@ class EmailTest extends TestCase
             'トップレベルドメインがない' => ['no-tld@domain', false],
             'ローカル部に連続したドットがある' => ['double..dot@domain.com', false],
             'ドメイン部に連続したドットがある' => ['email@domain..com', false],
-            'メール名が64文字を超えています' => ['aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa@gmail.com', false],
-            'ドメイン名が 64 文字を超えている' => ['email@aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.com', false],
-            'ローカル部分に特殊文字が含まれています' => ['abc#def@mail.com', false],
-            'メールアドレスにはアンダースコアが付いています' => ['abc_def@mail.com', true],
-            'メールアドレスにはハイフンが含まれています' => ['abc-def@mail.com', true],
-            'ドメイン名を含むメールアドレスの教育' => ['xxx@willcorp.education', true]
+            'ローカル部が64文字を超えている' => ['aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa@gmail.com', false],
+            'ドメイン部が64文字を超えている' => ['email@aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.com', false],
+            'ローカル部に特殊文字がある' => ['abc#def@mail.com', false],
+            'ローカル部にアンダースコアがある' => ['abc_def@mail.com', true],
+            'ローカル部にハイフンがある' => ['abc-def@mail.com', true],
+            'ドメイン部に教育用ドメイン名がある' => ['xxx@willcorp.education', true]
         ];
     }
 
